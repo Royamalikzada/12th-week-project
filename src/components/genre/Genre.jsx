@@ -19,7 +19,7 @@ export default class Genre extends React.Component {
             method: 'GET',
             headers: {
                 'X-RapidAPI-Host': 'movies-app1.p.rapidapi.com',
-                'X-RapidAPI-Key': 'f679e7a865mshed6ca704f07dd94p10385ejsn79e2dec69b71'
+                'X-RapidAPI-Key': '3edf72356dmsh32cd75163184843p15094djsn80f22b228826'
             }
         };
         
@@ -34,7 +34,7 @@ export default class Genre extends React.Component {
                 method: 'GET',
                 headers: {
                     'X-RapidAPI-Host': 'movies-app1.p.rapidapi.com',
-                    'X-RapidAPI-Key': 'f679e7a865mshed6ca704f07dd94p10385ejsn79e2dec69b71'
+                    'X-RapidAPI-Key': '3edf72356dmsh32cd75163184843p15094djsn80f22b228826'
                 }
             };
             
@@ -46,7 +46,7 @@ export default class Genre extends React.Component {
                 .catch(err => console.error(err));
     }
 
-    onGenreSelected = (name) =>{
+    onGenreSelected = (name) => {
         this.setState({
             selectedGenre: name
         })
@@ -61,8 +61,6 @@ export default class Genre extends React.Component {
     }
 
     render() {
-       console.log(this.state.movies, this.state.genres, this.state.filteredMovies);
-
         return(
             <div className='container-fluid'>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -75,8 +73,8 @@ export default class Genre extends React.Component {
                     <ul className="navbar-nav">
                        {this.state.genres.map(genre => {
                            return (
-                            <li className="nav-item">
-                                <button className="btn btn-dark" onClick={this.onGenreSelected(genre.name)} type='button'>{genre.name}</button>
+                            <li key={genre.uuid} className="nav-item">
+                                <button className="btn btn-dark" onClick={() => this.onGenreSelected(genre.name)} type='button'>{genre.name}</button>
                             </li>
                            )
                        })} 
